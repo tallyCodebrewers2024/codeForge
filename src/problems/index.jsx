@@ -5,12 +5,13 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
+import Submissions from "./components/Submissions";
 
 const Problems = () => {
 	return (
 		<div className="flex flex-row gap-2 justify-center dark:bg-black">
 			<div className="w-full h-screen max-w-[1200px] px-6 shadow-2xl">
-				<div className="flex flex-col w-full my-16 items-center">
+				<div className="flex flex-col w-full my-16 items-center gap-2">
 					<h1 className="text-3xl font-bold">Battle Practice</h1>
 					<p className="text-lg">Here are some problems to solve</p>
 				</div>
@@ -70,7 +71,7 @@ const Problems = () => {
 							</div>
 							<div className="flex flex-col rounded-lg">
 								<table className="table-auto text-left">
-									<tr className="opacity-50 text-sm border-b-2">
+									<tr className="text-sm border-b-2 border-opacity-50">
 										<th className="font-normal p-2">
 											Status
 										</th>
@@ -130,30 +131,7 @@ const Problems = () => {
 								Recent Submissions
 							</h2>
 						</div>
-						<div className="flex flex-col mt-3 rounded-lg">
-							<ol className="list-decimal list-inside">
-								<li className="flex space-x-4 font-normal p-2 odd:bg-gray-100 dark:odd:bg-[rgba(255,255,255,0.1)] rounded-sm">
-									<span>1.</span>
-									<span>Item 1</span>
-								</li>
-								<li className="flex space-x-4 font-normal p-2 odd:bg-gray-100 dark:odd:bg-[rgba(255,255,255,0.1)] rounded-sm">
-									<span>2.</span>
-									<span>Item 2</span>
-								</li>
-								<li className="flex space-x-4 font-normal p-2 odd:bg-gray-100 dark:odd:bg-[rgba(255,255,255,0.1)] rounded-sm">
-									<span>3.</span>
-									<span>Item 3</span>
-								</li>
-								<li className="flex space-x-4 font-normal p-2 odd:bg-gray-100 dark:odd:bg-[rgba(255,255,255,0.1)] rounded-sm">
-									<span>4.</span>
-									<span>Item 4</span>
-								</li>
-								<li className="flex space-x-4 font-normal p-2 odd:bg-gray-100 dark:odd:bg-[rgba(255,255,255,0.1)] rounded-sm">
-									<span>5.</span>
-									<span>Item 5</span>
-								</li>
-							</ol>
-						</div>
+						<Submissions />
 					</div>
 				</div>
 			</div>
