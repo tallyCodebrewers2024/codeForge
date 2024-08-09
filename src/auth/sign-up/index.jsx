@@ -3,10 +3,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
 
-const SignInPage = () => {
+const SignUpPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPass, setShowPass] = useState(false);
+  const [password2, setPassword2] = useState("");
+  const [showPass, setShowPass] = useState(false);
+  const [showPass2, setShowPass2] = useState(false);
   const [error, setError] = useState("");
 
   const handleSubmit = () => {};
@@ -16,7 +19,9 @@ const SignInPage = () => {
       <Header />
       <div className="h-full grid place-items-center">
         <div className="p-10 border-black border-4 bg-white grid place-items-center shadow-lg rounded-lg">
-          <h1 className="text-xl font-bold my-4 text-black">Developer Login</h1>
+          <h1 className="text-xl font-bold my-4 text-black">
+            Developer Register
+          </h1>
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-3">
             <input
@@ -62,4 +67,4 @@ const SignInPage = () => {
   );
 };
 
-export default SignInPage;
+export default SignUpPage;
