@@ -5,8 +5,8 @@ import LanguageSelector from "./components/LanguageSelector";
 
 const CodeEditor = ({ problem }) => {
   const editorRef = useRef();
-  const [language, setLanguage] = useState("javascript");
-  const [value, setValue] = useState(CODE_SNIPPETS["javascript"]);
+  const [language, setLanguage] = useState("cpp");
+  const [value, setValue] = useState(CODE_SNIPPETS["cpp"]);
 
   const onMount = (editor) => {
     editorRef.current = editor;

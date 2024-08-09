@@ -6,23 +6,32 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import { LANGUAGE_VERSIONS } from "@/constants";
+import { LANGUAGE_VERSIONS, languges } from "@/constants";
 import { Button } from "@/components/ui/button";
 
-const languages = Object.entries(LANGUAGE_VERSIONS);
+const languageEntries = Object.entries(LANGUAGE_VERSIONS);
 
 const LanguageSelector = ({ language, onSelect }) => {
+  const handleSelect = (lang) => {
+    if (lang !== language) {
+      onSelect(lang);
+    }
+  };
+
   return (
     <div className="my-1">
       <p>Language: </p>
       <DropdownMenu>
         <DropdownMenuTrigger>
-          <Button className="h-7">{language}</Button>
+          <Button className="h-7">{languges[language]}</Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="ml-10">
-          {languages.map(([language, version]) => (
-            <DropdownMenuItem onClick={() => onSelect(language)}>
-              {language}
+          {languageEntries.map(([lang, version]) => (
+            <DropdownMenuItem
+              onClick={() => handleSelect(lang)}
+              className={lang === language ? "bg-gray-300" : "bg-white"}
+            >
+              {languges[lang]}
             </DropdownMenuItem>
           ))}
         </DropdownMenuContent>
