@@ -1,6 +1,7 @@
 import { UserButton } from "@clerk/clerk-react";
 import { Switch } from "@/components/ui/switch";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
 	const [theme, setTheme] = useState(() => {
@@ -33,13 +34,24 @@ const Header = () => {
 
 	return (
 		<div className="px-8 w-full h-12 shadow-lg justify-between">
-			<div>Header Logo</div>
+			<nav className="navbar">
+			<ul className="nav-links flex gap-4">
+				<li>
+					<Link to="/">Home</Link>
+				</li>
+				<li>
+					<Link to="/problems">Problems</Link>
+				</li>
+				<li>
+					<Link to="/contests">contest</Link>
+				</li>
+			</ul>
+		</nav>
 			<Switch
 				checked={theme === "dark"}
 				onClick={toggleTheme}
 				label="Dark Mode"
 			/>
-			<UserButton />
 		</div>
 	);
 };

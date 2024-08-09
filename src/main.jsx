@@ -10,8 +10,6 @@ import Home from "./home/index.jsx";
 import SignInPage from "./auth/sign-in/index.jsx";
 import Problems from "./problems/index.jsx";
 import ProblemPage from "./problems/[problemId]/index.jsx";
-import Contests from "./contests/index.jsx";
-
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
 if (!PUBLISHABLE_KEY) {
