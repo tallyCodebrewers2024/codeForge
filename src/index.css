@@ -67,3 +67,13 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .login_form_input {
+    @apply w-[400px] py-2 px-6 bg-zinc-100/40 border-gray-200 border text-black;
+  }
+
+  .form_input {
+    @apply w-[400px] py-2 px-6 bg-zinc-100/40 border-gray-200 border text-black;
+  }
+}
