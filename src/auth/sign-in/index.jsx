@@ -13,7 +13,6 @@ const SignInPage = () => {
 
   return (
     <div className="h-screen">
-      <Header />
       <div className="h-full grid place-items-center">
         <div className="p-10 border-black border-4 bg-white grid place-items-center shadow-lg rounded-lg">
           <h1 className="text-xl font-bold my-4 text-black">Developer Login</h1>

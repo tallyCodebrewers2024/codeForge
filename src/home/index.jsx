@@ -1,4 +1,3 @@
-import ProtectedRoute from "@/auth/protectedRoute";
 import React from "react";
 
 const Home = () => {
