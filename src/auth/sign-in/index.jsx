@@ -20,6 +20,7 @@ const SignInPage = () => {
       });
 
       if (response.status === 200) {
+        console.log(response);
         const token = response.data.token;
         localStorage.setItem("token", token);
 

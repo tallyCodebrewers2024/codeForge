@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
-import axios from "axios";
+import axiosInstance from "../../axiosInstance";
 import {
   ChevronDown,
   ChevronUp,
@@ -52,7 +52,7 @@ const AddProblemPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("/api/problems/addProblem", {
+      const response = await axiosInstance.post("/problems/addProblem", {
         method: "POST",
         headers: { "Content-Type": "applicaiton/json" },
         body: JSON.stringify(formData),
