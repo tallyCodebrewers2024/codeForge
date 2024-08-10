@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Switch } from "@/components/ui/switch";
 import axios from "axios";
 import {
   ChevronDown,
@@ -26,6 +27,7 @@ const AddProblemPage = () => {
     examples: [{ input: "", output: "", explanation: "" }],
     testCases: [{ input: "", output: "" }],
     author: "",
+    private: false,
   });
 
   const handleInputChange = (e) => {
@@ -128,9 +130,9 @@ const AddProblemPage = () => {
     setFormData(updatedProblem);
   };
 
-  const handleAddConstraint = () => {
+  const handleAddConstraint = (e) => {
+    e.preventDefault();
     const newConstraint = "";
-
     const constraintsCopy = [...formData.constraints, newConstraint];
     const updatedProblem = { ...formData };
     updatedProblem.constraints = constraintsCopy;
@@ -144,6 +146,13 @@ const AddProblemPage = () => {
     const updatedProblem = { ...formData };
     updatedProblem.constraints = constraintsListCopy;
     setFormData(updatedProblem);
+  };
+
+  const togglePrivacy = () => {
+    setFormData({
+      ...formData,
+      ["private"]: !formData.private,
+    });
   };
 
   return (
@@ -391,7 +400,15 @@ const AddProblemPage = () => {
               type="text"
               placeholder="Solution Code"
             />
-            <div className="col-span-3 w-full flex justify-end mt-3">
+            <div className="col-span-3 w-full flex justify-between mt-3">
+              <div className="flex flex-col gap-1">
+                <label>Private Question</label>
+                <Switch
+                  checked={formData.private}
+                  onClick={togglePrivacy}
+                  label="Private Question"
+                />
+              </div>
               <Button onClick={(e) => handleSubmit(e)}>Submit</Button>
             </div>
           </form>
