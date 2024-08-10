@@ -1,33 +1,6 @@
 import React from "react";
 
-const problems = [
-  {
-    problemId: 1,
-    title: "A+B Again?",
-    difficulty: "Easy",
-    status: "Accepted",
-  },
-  {
-    problemId: 2,
-    title: "Card Games",
-    difficulty: "Easy",
-    status: "Accepted",
-  },
-  {
-    problemId: 3,
-    title: "Showering",
-    difficulty: "Medium",
-    status: "Wrong Answer",
-  },
-  {
-    problemId: 4,
-    title: "Slavic's Exam",
-    difficulty: "Hard",
-    status: "",
-  },
-];
-
-const ProblemSet = () => {
+const ProblemSet = ({ contest }) => {
   return (
     <div className="border-4 border-gray-500 rounded-lg shadow-lg">
       <div className="bg-gray-500 uppercase font-bold">Problems</div>
@@ -46,15 +19,15 @@ const ProblemSet = () => {
             </tr>
           </thead>
           <tbody>
-            {problems.map((problem, index) => {
-              const bgVar = problem.status
-                ? problem.status === "Accepted"
+            {contest.problems.map((item, index) => {
+              const bgVar = item.status
+                ? item.status === "Accepted"
                   ? "bg-green-300/20"
                   : "bg-red-300/20"
                 : "";
 
               const diffColor =
-                problem.difficulty === "Easy"
+                item.problem.difficulty === "Easy"
                   ? "text-green-700"
                   : problem.difficulty === "Medium"
                   ? "text-yellow-700"
@@ -65,15 +38,17 @@ const ProblemSet = () => {
                     {index + 1}
                   </td>
                   <td className="border-primary/20 border-[2px] pl-2">
-                    {problem.title}
+                    <a href={`/problems/${item.problem.problemId}`}>
+                      {item.problem.title}
+                    </a>
                   </td>
                   <td
                     className={`border-primary/20 border-[2px] text-center ${diffColor}`}
                   >
-                    {problem.difficulty}
+                    {item.problem.difficulty}
                   </td>
                   <td className="border-primary/20 border-[2px] text-center">
-                    {problem.status}
+                    "Accepted"
                   </td>
                 </tr>
               );
