@@ -17,59 +17,59 @@ import Playground from "./playground/index.jsx";
 import AddContestPage from "./contests/add/index.jsx";
 
 const router = createBrowserRouter([
-	{
-		element: <App />,
-		children: [
-			{
-				path: "/",
-				element: <Home />,
-			},
-			{
-				path: "/problems",
-				element: <Problems />,
-			},
-			{
-				path: "/problems/:problemId",
-				element: <ProblemPage />,
-			},
-			{
-				path: "/playground",
-				element: <Playground />,
-			},
-			{
-				path: "/contests",
-				element: <Contests />,
-			},
-			{
-				path: "/contests/:contestId",
-				element: <ContestPage />,
-			},
-			{
-				path: "/problems/:problemId",
-				element: <ProblemPage />,
-			},
-			{
-				path: "/problems/add",
-				element: <AddProblemPage />,
-			},
-			{
-				path: "/contests/add",
-				element: <AddContestPage />,
-			},
-		],
-	},
-	{
-		path: "/auth/sign-in",
-		element: <SignInPage />,
-	},
-	{
-		path: "/auth/sign-up",
-		element: <SignUpPage />,
-	},
+  {
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/problems",
+        element: <Problems />,
+      },
+      {
+        path: "/problems/:problemId",
+        element: <ProblemPage />,
+      },
+      {
+        path: "/playground",
+        element: <Playground />,
+      },
+      {
+        path: "/contests",
+        element: <Contests />,
+      },
+      {
+        path: "/contests/:contestId",
+        element: <ContestPage />,
+      },
+      {
+        path: "/problems/:problemId",
+        element: <ProblemPage />,
+      },
+      {
+        path: "/problems/add",
+        element: <AddProblemPage />,
+      },
+      {
+        path: "/contests/add",
+        element: <AddContestPage />,
+      },
+      {
+        path: "/auth/sign-in",
+        element: <SignInPage />,
+      },
+      {
+        path: "/auth/sign-up",
+        element: <SignUpPage />,
+      },
+    ],
+  },
 ]);
 
 createRoot(document.getElementById("root")).render(
-	<StrictMode>
-		<RouterProvider router={router} />
-	</StrictMode>
+  <StrictMode>
+    <RouterProvider router={router} />
+  </StrictMode>
 );
