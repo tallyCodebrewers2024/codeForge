@@ -13,6 +13,7 @@ import ProblemPage from "./problems/[problemId]/index.jsx";
 import Contests from "./contests/index.jsx";
 import SignUpPage from "./auth/sign-up/index.jsx";
 import ContestPage from "./contests/[contestId]/index.jsx";
+import AddProblemPage from "./problems/add/index.jsx";
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
@@ -43,6 +44,14 @@ const router = createBrowserRouter([
       {
         path: "/contests/:contestId",
         element: <ContestPage />,
+      },
+      {
+        path: "/problems/:problemId",
+        element: <ProblemPage />,
+      },
+      {
+        path: "/problems/add",
+        element: <AddProblemPage />,
       },
     ],
   },
