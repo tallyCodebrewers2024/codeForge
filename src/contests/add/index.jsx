@@ -50,12 +50,47 @@ const AddContestPage = () => {
 							name="endTime"
 							type="datetime-local"
 						/>
+						<select className="form_input">
+							<option
+								value="1"
+								className="dark:text-white text-black"
+							>
+								Div 1
+							</option>
+							<option
+								value="2"
+								className="dark:text-white text-black"
+							>
+								Div 2
+							</option>
+							<option
+								value="3"
+								className="dark:text-white text-black"
+							>
+								Div 3
+							</option>
+							<option
+								value="4"
+								className="dark:text-white text-black"
+							>
+								Div 4
+							</option>
+						</select>
 						<textarea
 							onChange={(e) => handleInputChange(e)}
-							className="form_input col-span-3"
+							className="form_input col-span-3 min-h-[150px]"
 							name="description"
 							placeholder="Contest Description"
 						/>
+						<div className="flex flex-row gap-3 col-span-3">
+							<label>Problems</label>
+							<Button className="bg-green-500 text-3xl font-medium">
+								+
+							</Button>
+							<Button className="bg-red-500 text-3xl font-medium">
+								-
+							</Button>
+						</div>
 						<Button
 							type="submit"
 							className="col-span-3 bg-blue-500"
