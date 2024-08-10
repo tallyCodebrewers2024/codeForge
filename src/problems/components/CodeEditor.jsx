@@ -19,7 +19,7 @@ const CodeEditor = ({ problem }) => {
 	};
 
 	return (
-		<div className="flex flex-col w-full h-full border-gray-400 border rounded-md border-opacity-50 p-4 gap-2">
+		<div className="flex flex-col w-full h-[100%] border-gray-400 border rounded-md border-opacity-50 p-4 gap-2">
 			<LanguageSelector language={language} onSelect={onSelect} />
 			<Editor
 				height={"100%"}
