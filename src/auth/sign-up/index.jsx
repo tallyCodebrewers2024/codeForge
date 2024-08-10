@@ -2,6 +2,7 @@ import Header from "@/components/custom/Header";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
+import axiosInstance from "../../axiosInstance";
 
 const SignUpPage = () => {
   const [name, setName] = useState("");
@@ -15,7 +16,32 @@ const SignUpPage = () => {
   const [github, setGithub] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = () => {};
+  const handleRegister = async (e) => {
+    e.preventDefault();
+
+    if (password !== password2) {
+      window.alert("Passwords do not match!");
+      return;
+    }
+
+    try {
+      const response = await axiosInstance.post("/auth/signup", {
+        name,
+        username,
+        email,
+        password,
+        github,
+        linkedin,
+      });
+
+      if (response.status === 201) {
+        // handle successful registration
+        window.alert("Successfully registered!");
+      }
+    } catch (error) {
+      window.alert(error);
+    }
+  };
 
   return (
     <div className="h-screen">
@@ -25,7 +51,7 @@ const SignUpPage = () => {
             Developer Register
           </h1>
 
-          <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+          <form className="flex flex-col gap-3">
             <input
               onChange={(e) => setName(e.target.value)}
               className="login_form_input"
@@ -82,7 +108,7 @@ const SignUpPage = () => {
               className="login_form_input"
               type="text"
               placeholder="Github"
-              value={name}
+              value={github}
             />
             <input
               onChange={(e) => setLinkedin(e.target.value)}
@@ -91,7 +117,10 @@ const SignUpPage = () => {
               placeholder="Linkedin"
               value={linkedin}
             />
-            <button className="bg-black text-white font-bold px-6 py-2">
+            <button
+              className="bg-black text-white font-bold px-6 py-2"
+              onClick={handleRegister}
+            >
               Register
             </button>
 

@@ -2,6 +2,7 @@ import Header from "@/components/custom/Header";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
+import axiosInstance from "../../axiosInstance";
 
 const SignInPage = () => {
   const [email, setEmail] = useState("");
@@ -9,7 +10,26 @@ const SignInPage = () => {
   const [showPass, setShowPass] = useState(false);
   const [error, setError] = useState("");
 
-  const handleSubmit = () => {};
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axiosInstance.post("/auth/login", {
+        email,
+        password,
+      });
+
+      if (response.status === 200) {
+        const token = response.data.token;
+        localStorage.setItem("token", token);
+
+        // handle successful login
+        window.alert("Login successful!");
+      }
+    } catch (error) {
+      window.alert(error);
+    }
+  };
 
   return (
     <div className="h-screen">
@@ -17,7 +37,7 @@ const SignInPage = () => {
         <div className="p-10 border-black border-4 bg-white grid place-items-center shadow-lg rounded-lg">
           <h1 className="text-xl font-bold my-4 text-black">Developer Login</h1>
 
-          <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+          <form className="flex flex-col gap-3">
             <input
               onChange={(e) => setEmail(e.target.value)}
               className="login_form_input"
@@ -38,7 +58,10 @@ const SignInPage = () => {
                 <FontAwesomeIcon icon={showPass ? faEyeSlash : faEye} />
               </span>
             </div>
-            <button className="bg-black text-white font-bold px-6 py-2">
+            <button
+              className="bg-black text-white font-bold px-6 py-2"
+              onClick={handleLogin}
+            >
               Login
             </button>
 
