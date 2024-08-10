@@ -39,6 +39,10 @@ const router = createBrowserRouter([
 				element: <ProblemPage />,
 			},
 			{
+				path: "/playground",
+				element: <Playground />,
+			},
+			{
 				path: "/contests",
 				element: <Contests />,
 			},
@@ -53,43 +57,6 @@ const router = createBrowserRouter([
 			{
 				path: "/problems/add",
 				element: <AddProblemPage />,
-			},
-		],
-	},
-	{
-		path: "/auth/sign-in",
-		element: <SignInPage />,
-	},
-	{
-		path: "/auth/sign-up",
-		element: <SignUpPage />,
-	},
-	{
-		element: <App />,
-		children: [
-			{
-				path: "/",
-				element: <Home />,
-			},
-			{
-				path: "/problems",
-				element: <Problems />,
-			},
-			{
-				path: "/problems/:problemId",
-				element: <ProblemPage />,
-			},
-			{
-				path: "/playground",
-				element: <Playground />,
-			},
-			{
-				path: "/contests",
-				element: <Contests />,
-			},
-			{
-				path: "/contests/:contestId",
-				element: <ContestPage />,
 			},
 		],
 	},

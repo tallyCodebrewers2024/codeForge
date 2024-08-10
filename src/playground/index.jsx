@@ -7,9 +7,9 @@ const Playground = () => {
 	return (
 		<div className="flex flex-row justify-center">
 			<div className="w-full max-w-[1200px] px-6 shadow-2xl">
-				<div className="flex flex-col w-full mt-4 items-center gap-2">
+				{/* <div className="flex flex-col w-full mt-4 items-center gap-2">
 					<h1 className="text-3xl font-bold">Coding Playground</h1>
-				</div>
+				</div> */}
 				<div className="flex flex-col min-h-[95vh] p-4 gap-2 w-full">
 					<div className="h-[60vh]">
 						<CodeEditor />
