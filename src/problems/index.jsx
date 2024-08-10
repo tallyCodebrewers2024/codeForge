@@ -103,7 +103,11 @@ const Problems = () => {
                     problems.map((problem, index) => (
                       <tr key={index}>
                         <td className="font-normal p-2">✅</td>
-                        <td className="font-normal p-2">{problem.title}</td>
+                        <td className="font-normal p-2">
+                          <a href={`/problems/${problem.problemId}`}>
+                            {problem.title}
+                          </a>
+                        </td>
                         <td className="font-normal p-2">
                           {problem.difficulty}
                         </td>

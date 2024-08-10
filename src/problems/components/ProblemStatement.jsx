@@ -1,50 +1,58 @@
 const ProblemStatement = ({ problem }) => {
-	return (
-		<div className="flex w-full flex-col border-gray-400 border rounded-md border-opacity-50 p-4">
-			<div>
-				<h2 className="font-bold text-3xl mb-3">
-					Nth Fibonacci Number Problem
-				</h2>
-			</div>
-			<div className="flex flex-col">
-				<div className="flex flex-row">
-					<div className="font-normal p-2">
-						<strong>Difficulty:</strong> Hard
-					</div>
-					<div className="font-normal p-2">
-						<strong>Tags:</strong> Array, Hash Table
-					</div>
-				</div>
-				<div className="font-normal p-2">
-					The Fibonacci numbers, commonly denoted F(n) form a
-					sequence, called the Fibonacci sequence, such that each
-					number is the sum of the two preceding ones, starting from 0
-					and 1. That is: F(0) = 0, F(1) = 1 F(n) = F(n - 1) + F(n -
-					2), for n > 1. Given n, calculate F(n).
-				</div>
-				<div className="font-normal p-2">
-					<strong>Example 1:</strong>
-					<br />
-					<strong>Input:</strong> n = 2
-					<br />
-					<strong>Output:</strong> 1
-					<br />
-					<strong>Explanation:</strong> F(2) = F(1) + F(0) = 1 + 0 =
-					1.
-				</div>
-				<div className="font-normal p-2">
-					<strong>Example 2:</strong>
-					<br />
-					<strong>Input:</strong> n = 3
-					<br />
-					<strong>Output:</strong> 2
-					<br />
-					<strong>Explanation:</strong> F(3) = F(2) + F(1) = 1 + 1 =
-					2.
-				</div>
-			</div>
-		</div>
-	);
+  return (
+    <div className="flex w-full flex-col border-gray-400 border rounded-md border-opacity-50 p-4">
+      <div>
+        <h2 className="font-bold text-3xl mb-3">{problem.title}</h2>
+      </div>
+      <div className="flex flex-col">
+        <div className="flex flex-row gap-1">
+          <div className="font-normal p-2">
+            <strong>Difficulty:</strong> {problem.difficulty}
+          </div>
+          <div className="flex flex-row gap-1 font-normal p-2">
+            <strong>Tags:</strong>{" "}
+            {problem.tags &&
+              problem.tags.map((tag, index) => (
+                <p key={index} className="w-auto px-1 bg-gray-500 rounded-sm">
+                  {tag}
+                </p>
+              ))}
+          </div>
+        </div>
+        <div className="font-normal p-2">{problem.problemStatement}</div>
+        <div className="font-normal p-2">
+          <strong>Input Format:</strong>
+          <br />
+          {problem.inputFormat}
+        </div>
+        <div className="font-normal p-2">
+          <strong>Output Format:</strong>
+          <br />
+          {problem.outputFormat}
+        </div>
+        <div className="font-normal p-2">
+          {problem.examples &&
+            problem.examples.map((example, index) => {
+              return (
+                <div>
+                  <strong>Example {index + 1}:</strong>
+                  <br />
+                  <strong>Input:</strong> {example.input}
+                  <br />
+                  <strong>Output:</strong> {example.output}
+                  <br />
+                  {example.explanation && (
+                    <>
+                      <strong>Explanation:</strong> {example.explanation}
+                    </>
+                  )}
+                </div>
+              );
+            })}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default ProblemStatement;
