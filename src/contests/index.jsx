@@ -19,9 +19,9 @@ const Contests = () => {
 				</div>
 				<div className="w-full flex justify-between font-bold">
 					<div className="text-xl">Upcoming Contests</div>
-					<div className="text-green-600">
+					<a href="/contests/add" className="text-green-600">
 						+ Host Your Own Contest
-					</div>
+					</a>
 				</div>
 				<div className="flex flex-col gap-2 px-14 my-3 py-5">
 					<div className="w-full h-[200px]">
