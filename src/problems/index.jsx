@@ -17,7 +17,12 @@ const Problems = () => {
 				</div>
 				<div className="flex flex-row gap-3">
 					<div className="flex flex-col w-2/3 border-gray-400 border rounded-md border-opacity-50 p-4">
-						<h2 className="font-bold text-xl">Problem Set</h2>
+						<div className="flex flex-row justify-between items-center">
+							<h2 className="font-bold text-xl">Problem Set</h2>
+							<p className="text-sm text-green-500">
+								+ Add Your Own Problem
+							</p>
+						</div>
 						<div className="flex flex-col w-full">
 							<div className="flex flex-row gap-2 w-full my-3">
 								<Select>

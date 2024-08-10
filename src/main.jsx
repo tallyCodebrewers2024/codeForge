@@ -4,7 +4,6 @@ import App from "./App.jsx";
 import "./index.css";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { ClerkProvider } from "@clerk/clerk-react";
 
 import Home from "./home/index.jsx";
 import SignInPage from "./auth/sign-in/index.jsx";
@@ -15,12 +14,7 @@ import SignUpPage from "./auth/sign-up/index.jsx";
 import ContestPage from "./contests/[contestId]/index.jsx";
 import AddProblemPage from "./problems/add/index.jsx";
 import Playground from "./playground/index.jsx";
-
-const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
-
-if (!PUBLISHABLE_KEY) {
-	throw new Error("Missing Publishable Key");
-}
+import AddContestPage from "./contests/add/index.jsx";
 
 const router = createBrowserRouter([
 	{
@@ -58,6 +52,10 @@ const router = createBrowserRouter([
 				path: "/problems/add",
 				element: <AddProblemPage />,
 			},
+			{
+				path: "/contests/add",
+				element: <AddContestPage />,
+			},
 		],
 	},
 	{
@@ -72,8 +70,6 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
 	<StrictMode>
-		<ClerkProvider publishableKey={PUBLISHABLE_KEY}>
-			<RouterProvider router={router} />
-		</ClerkProvider>
+		<RouterProvider router={router} />
 	</StrictMode>
 );
