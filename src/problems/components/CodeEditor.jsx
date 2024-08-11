@@ -28,7 +28,7 @@ const CodeEditor = ({ inputString, problem, outputMethods }) => {
         language, code, input:inputString
       });
 
-      console.log(response.data);
+      // console.log(response.data);
 
       outputMethods.setOutputString(response.data.output);
       outputMethods.setOutputMemory(response.data.memory);
@@ -44,7 +44,9 @@ const CodeEditor = ({ inputString, problem, outputMethods }) => {
     <div className="flex flex-col w-full h-[100%] border-gray-400 border rounded-md border-opacity-50 p-4 gap-2">
       <div>
         <LanguageSelector language={language} onSelect={onSelect} />
-        <Button onClick={handleRunCode} >Run Code</Button>
+        { !problem &&
+          <Button onClick={handleRunCode} >Run Code</Button>
+        }
       </div>
       <Editor
         height={"100%"}
