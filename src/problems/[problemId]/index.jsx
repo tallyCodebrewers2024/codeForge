@@ -19,18 +19,16 @@ const ProblemPage = () => {
     const [language, setLanguage] = useState("cpp");
     const [code, setCode] = useState(CODE_SNIPPETS[language]);
 
-    const getProblem = async () => {
-        console.log(problemId);
-        try {
-            const res = await axiosInstance.get(
-                `/problems/getProblem/${problemId}`
-            );
-            setProblem(res.data);
-        } catch (error) {
-            console.log(error);
-        }
-        setLoading(false);
-    };
+  const getProblem = async () => {
+    try {
+      const res = await axiosInstance.get(`/problems/getProblem/${problemId}`);
+      setProblem(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+
+    setLoading(false);
+  };
 
     useEffect(() => {
         getProblem();
