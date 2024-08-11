@@ -4,6 +4,7 @@ import ProblemSet from "../components/ProblemSet";
 import { useParams } from "react-router-dom";
 import LoadingPage from "@/components/custom/LoadingPage";
 import NotFoundPage from "@/components/custom/NotFoundPage";
+import axiosInstance from "../../axiosInstance";
 
 const ContestPage = () => {
   const [contest, setContest] = useState();
@@ -47,21 +48,11 @@ const ContestPage = () => {
               </Button>
               <Button
                 className={`p-2 ${
-                  index === 1
-                    ? "bg-primary text-secondary"
-                    : "bg-secondary text-primary"
-                } hover:bg-gray-600`}
-                onClick={() => setIndex(1)}
-              >
-                Submissions
-              </Button>
-              <Button
-                className={`p-2 ${
                   index === 2
                     ? "bg-primary text-secondary"
                     : "bg-secondary text-primary"
                 } hover:bg-gray-600`}
-                onClick={() => setIndex(2)}
+                onClick={() => setIndex(1)}
               >
                 Standings
               </Button>
