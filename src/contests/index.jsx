@@ -18,19 +18,13 @@ const Contests = () => {
 		try {
 			const res = await axiosInstance.get("/contests/getAllContests");
 			setContests(res.data);
-			localStorage.setItem("contests", JSON.stringify(res.data));
 		} catch (error) {
 			console.log(error);
 		}
 	};
 
 	useEffect(() => {
-		const contests = JSON.parse(localStorage.getItem("contests"));
-		if (contests) {
-			setContests(contests);
-		} else {
-			getAllContests();
-		}
+		getAllContests();
 	}, []);
 
 	useEffect(() => {
