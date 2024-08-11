@@ -4,6 +4,7 @@ import ProblemSet from "../components/ProblemSet";
 import { useParams } from "react-router-dom";
 import LoadingPage from "@/components/custom/LoadingPage";
 import NotFoundPage from "@/components/custom/NotFoundPage";
+import axiosInstance from "../../axiosInstance";
 
 const ContestPage = () => {
   const [contest, setContest] = useState();
