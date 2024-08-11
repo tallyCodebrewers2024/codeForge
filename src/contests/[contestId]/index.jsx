@@ -13,7 +13,6 @@ const ContestPage = () => {
   const [index, setIndex] = useState(0);
 
   const getContest = async () => {
-    console.log(contestId);
     try {
       const res = await axiosInstance.get(`/contests/getContest/${contestId}`);
       setContest(res.data);
@@ -48,7 +47,7 @@ const ContestPage = () => {
               </Button>
               <Button
                 className={`p-2 ${
-                  index === 2
+                  index === 1
                     ? "bg-primary text-secondary"
                     : "bg-secondary text-primary"
                 } hover:bg-gray-600`}
@@ -57,7 +56,9 @@ const ContestPage = () => {
                 Standings
               </Button>
             </div>
-            <div className="mt-5">{index === 0 && <ProblemSet />}</div>
+            <div className="mt-5">
+              {index === 0 && <ProblemSet contest={contest} />}
+            </div>
           </div>
         </div>
       ) : (

@@ -14,7 +14,6 @@ const ProblemPage = () => {
   const { problemId } = useParams();
 
   const getProblem = async () => {
-    console.log(problemId);
     try {
       const res = await axiosInstance.get(`/problems/getProblem/${problemId}`);
       setProblem(res.data);
