@@ -98,7 +98,7 @@ const Problems = () => {
                     <th className="font-normal p-2">Difficulty</th>
                     <th className="font-normal p-2">Tags</th>
                   </tr>
-                  {problems &&
+                  {problems.length &&
                     problems.map((problem, index) => (
                       <tr key={index}>
                         <td className="font-normal p-2">✅</td>
