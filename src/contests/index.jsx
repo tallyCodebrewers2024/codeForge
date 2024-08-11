@@ -6,8 +6,49 @@ import {
 	CarouselNext,
 	CarouselPrevious,
 } from "@/components/ui/carousel";
+import { useState, useEffect } from "react";
+import axiosInstance from "../axiosInstance";
 
 const Contests = () => {
+	const [contests, setContests] = useState([]);
+	const [upcomingContests, setUpcomingContests] = useState([]);
+	const [pastContests, setPastContests] = useState([]);
+
+	const getAllContests = async () => {
+		try {
+			const res = await axiosInstance.get("/contests/getAllContests");
+			setContests(res.data);
+			localStorage.setItem("contests", JSON.stringify(res.data));
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	useEffect(() => {
+		const contests = JSON.parse(localStorage.getItem("contests"));
+		if (contests) {
+			setContests(contests);
+		} else {
+			getAllContests();
+		}
+	}, []);
+
+	useEffect(() => {
+		const categorizeContests = (contests) => {
+			const now = new Date();
+			const upcoming = contests.filter(
+				(contest) => new Date(contest.startTime) > now
+			);
+			const past = contests.filter(
+				(contest) => new Date(contest.endTime) < now
+			);
+			setUpcomingContests(upcoming);
+			setPastContests(past);
+		};
+
+		categorizeContests(contests);
+	}, [contests]);
+
 	return (
 		<div className="flex w-full h-full justify-center">
 			<div className="w-full h-screen max-w-[1200px] px-6 shadow-2xl">
@@ -27,15 +68,29 @@ const Contests = () => {
 					<div className="w-full h-[200px]">
 						<Carousel className="w-full">
 							<CarouselContent className="-ml-1">
-								{Array.from({ length: 10 }).map((_, index) => (
+								{upcomingContests.map((contest, index) => (
 									<CarouselItem
 										key={index}
 										className="bg-black/50 h-[200px] ml-2 rounded-lg dark:bg-[#30303077] bg-[#d4d4d4] grid place-items-center md:basis-1/3 lg:basis-1/3"
 									>
-										<div className="p-1">
-											<h2>Contest {index + 1}</h2>
-											<h5>Aug 1,2024</h5>
-										</div>
+										<a
+											href={`/contests/${contest.contestId}`}
+										>
+											<div className="p-1 flex flex-col items-center justify-center">
+												<h2 className="text-2xl font-bold">
+													{contest.title}
+												</h2>
+												<h5 className="text-sm text-gray-300">
+													{new Date(
+														contest.startTime
+													).toLocaleDateString()}
+													<br />
+													{new Date(
+														contest.startTime
+													).toLocaleTimeString()}{" "}
+												</h5>
+											</div>
+										</a>
 									</CarouselItem>
 								))}
 							</CarouselContent>
@@ -51,17 +106,32 @@ const Contests = () => {
 						</div>
 						<div className="flex flex-col rounded-lg">
 							<ol className="list-decimal list-inside">
-								<li className="flex flex-row font-normal p-2 items-center justify-between">
-									<div className="flex flex-col text-lg">
-										<span>Contest 1</span>
-										<span className="text-sm text-gray-500">
-											Aug 12, 2024
-										</span>
-									</div>
-									<div>
-										<Button>View Contest</Button>
-									</div>
-								</li>
+								{pastContests.map((contest) => (
+									<li
+										className="flex flex-row font-normal p-2 items-center justify-between"
+										key={contest._id}
+									>
+										<div className="flex flex-col text-lg">
+											<span>{contest.title}</span>
+											<span className="text-sm text-gray-500">
+												{new Date(
+													contest.startTime
+												).toLocaleDateString()}
+												{" - "}
+												{new Date(
+													contest.startTime
+												).toLocaleTimeString()}
+											</span>
+										</div>
+										<div>
+											<a
+												href={`/contests/${contest.contestId}`}
+											>
+												<Button>View Contest</Button>
+											</a>
+										</div>
+									</li>
+								))}
 							</ol>
 						</div>
 					</div>
@@ -73,23 +143,23 @@ const Contests = () => {
 							<ol className="list-decimal list-inside">
 								<li className="flex space-x-4 font-normal p-2 odd:bg-gray-100 dark:odd:bg-[rgba(255,255,255,0.1)] rounded-sm">
 									<span>1.</span>
-									<span>Item 1</span>
+									<span>coder_god</span>
 								</li>
 								<li className="flex space-x-4 font-normal p-2 odd:bg-gray-100 dark:odd:bg-[rgba(255,255,255,0.1)] rounded-sm">
 									<span>2.</span>
-									<span>Item 2</span>
+									<span>nitinraj</span>
 								</li>
 								<li className="flex space-x-4 font-normal p-2 odd:bg-gray-100 dark:odd:bg-[rgba(255,255,255,0.1)] rounded-sm">
 									<span>3.</span>
-									<span>Item 3</span>
+									<span>nikhil007</span>
 								</li>
 								<li className="flex space-x-4 font-normal p-2 odd:bg-gray-100 dark:odd:bg-[rgba(255,255,255,0.1)] rounded-sm">
 									<span>4.</span>
-									<span>Item 4</span>
+									<span>vamshi333</span>
 								</li>
 								<li className="flex space-x-4 font-normal p-2 odd:bg-gray-100 dark:odd:bg-[rgba(255,255,255,0.1)] rounded-sm">
 									<span>5.</span>
-									<span>Item 5</span>
+									<span>eqlipse</span>
 								</li>
 							</ol>
 						</div>
