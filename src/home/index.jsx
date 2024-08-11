@@ -78,7 +78,7 @@ const Home = () => {
 						Happy Coding!
 					</p>
 					<Button className="mt-10 bg-blue-500 text-xl px-4 py-2">
-						Get Started
+						<a href="/playground">Get Started</a>
 					</Button>
 				</section>
 			</div>
