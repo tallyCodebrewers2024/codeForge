@@ -76,6 +76,19 @@
 	.form_input {
 		@apply py-2 px-4 bg-zinc-100 border-gray-600 border border-opacity-50 dark:text-white dark:bg-zinc-800;
 	}
+
+	.output-details {
+		float: right;
+		padding: 0 2rem;
+	}
+
+	.output-details span {
+		color: rgb(68, 207, 68);
+	}
+
+	.error-true {
+		color: #b73636 !important;
+	}
 }
 
 /* Scrollbar Styles */
@@ -116,3 +129,4 @@ body.dark-mode ::-webkit-scrollbar-track {
 	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyAv2sAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIEEFwAn3kMwcB6I2AAAAAASUVORK5CYII=");
 	cursor: row-resize;
 }
+
